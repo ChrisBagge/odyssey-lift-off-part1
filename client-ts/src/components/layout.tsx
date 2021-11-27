@@ -1,0 +1,49 @@
+import React, { ReactNode } from 'react';
+import Header from '../components/header';
+import Footer from '../components/footer';
+import styled from '@emotion/styled';
+import { widths, unit } from '../styles';
+
+type pageProps = {
+  fullWidth: boolean,
+  grid: boolean
+}
+
+/**
+ * Layout renders the full page content:
+ * with header, Page container and footer
+ */
+ type LayoutProps = {
+  fullWidth?: boolean;
+  children: ReactNode;
+  grid?: boolean;
+};
+function Layout({ fullWidth=false, children, grid=false }:
+  LayoutProps) {
+  return (
+    <>
+      <Header />
+      <PageContainer fullWidth={fullWidth} grid={grid}>
+        {children}
+      </PageContainer>
+      <Footer />
+    </>
+  );
+};
+
+export default Layout;
+
+/** Layout styled components */
+const PageContainer = styled('div')<pageProps>`
+  display: 'flex',
+  justifyContent: ${props => props.grid} ? 'center' : 'top',
+  flexDirection: ${props => props.grid} ? 'row' : 'column',
+  flexWrap: 'wrap',
+  alignSelf: 'center',
+  flexGrow: 1,
+  maxWidth: ${props => props.fullWidth} ? null : ${widths.regularPageWidth}px,
+  width: '100%',
+  padding: ${props => props.fullWidth} ? 0 : ${unit} * 2,
+  paddingBottom: ${unit} * 5,
+  `;
+;
