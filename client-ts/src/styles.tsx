@@ -1,7 +1,7 @@
 import React from 'react';
 import '@apollo/space-kit/reset.css';
 import { colors as SKColors } from '@apollo/space-kit/colors';
-import { jsx, Global } from '@emotion/react';
+import { Global } from '@emotion/core';
 
 const breakpoints = [480, 768, 992, 1200];
 export const mq = breakpoints.map((bp) => `@media (min-width: ${bp}px)`);

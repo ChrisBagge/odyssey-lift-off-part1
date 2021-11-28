@@ -24,7 +24,7 @@ export default Layout;
 
 /** Layout styled components */
 const PageContainer = styled.div((props) => ({
-  display: 'flex',
+  display: flex,
   justifyContent: props.grid ? 'center' : 'top',
   flexDirection: props.grid ? 'row' : 'column',
   flexWrap: 'wrap',

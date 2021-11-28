@@ -10,6 +10,7 @@ import logo from '../assets/space_cat_logo.png';
  */
 function Header() {
   return (
+    
     <HeaderBar>
       <Container>
         <HomeButtonContainer>
@@ -33,6 +34,7 @@ function Header() {
 export default Header;
 
 /** Header styled components */
+
 const HeaderBar = styled.div({
   display: 'flex',
   flexDirection: 'row',
