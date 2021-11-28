@@ -1,6 +1,8 @@
 import React from 'react';
 import Layout from '../components/layout';
 import {useQuery, gql} from '@apollo/client';
+import TrackCard from '../containers/track-card';
+import { TrackForHome } from '../interfaces/tracks'
 
 /**
  * Tracks Page is the Catstronauts home page.
@@ -23,12 +25,17 @@ export const TRACKS = gql`
   }
 `;
 function Tracks() {
-  const {loading, error, data} = useQuery(TRACKS);
+  const {loading, error, data} = useQuery<TrackForHome>(TRACKS);
   if (loading) 
     return (<div>'Loading...'</div>);
   if (error) 
     return <div>Error! ${error.message}</div>;
-  return (<Layout grid>{JSON.stringify(data)}</Layout>);
+  return ( 
+    <Layout grid>
+    {data?.tracksForHome?.map(track => (
+    <TrackCard key={track.id} track={track} />
+  ))}
+  </Layout>);
 };
 
 
