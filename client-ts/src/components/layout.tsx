@@ -51,20 +51,3 @@ const PageContainer = styled('div')<pageProps>({
   flexDirection: props.grid ? 'row' : 'column',
   })
 )
-
-/*
-const PageContainer = styled('div')<pageProps>({
-  display: 'flex',  
-  flexWrap: 'wrap',
-  alignSelf: 'center',
-  flexGrow: 1,
-  maxWidth: '1100px',
-  width: '100%',
-  padding: '16px'
-},
-  props => ({
-  paddingBottom: `${props.paddingBottom}px`,
-  justifyContent: props.justifyContent,
-  flexDirection: props.flexDirection
-  })
-);*/

@@ -4,13 +4,15 @@ import { LoadingSpinner } from '@apollo/space-kit/Loaders/LoadingSpinner';
 import { ApolloError } from '@apollo/client'
 import { TrackForHome } from '../interfaces/tracks'
 
-
 /**
  * Query Results conditionally renders Apollo useQuery hooks states:
  * loading, error or its children when data is ready
  */
 function QueryResult({ loading, error, data, children }:
-  { loading: boolean, error?: ApolloError, data?: TrackForHome, children: any }) {
+  {
+    loading: boolean, error?: ApolloError, data?: TrackForHome,
+    children: ReactNode
+  }) {
   if (error) {
     return <p>ERROR: {error.message}</p>;
   }
@@ -24,9 +26,10 @@ function QueryResult({ loading, error, data, children }:
   if (!data) {
     return <p>Nothing to show...</p>;
   }
-  if (data) {
-    return children;
-  }
+  if (data)
+    return <>{children}</>;
+
+  return <></>
 };
 
 export default QueryResult;

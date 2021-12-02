@@ -27,16 +27,12 @@ export const TRACKS = gql`
 `;
 function Tracks() {
   const { loading, error, data } = useQuery<TrackForHome>(TRACKS);
-  // if (loading)
-  //   return (<div>'Loading...'</div>);
-  // if (error)
-  //   return <div>Error! ${error.message}</div>;
   return (
     <Layout grid>
-      <QueryResult error={error} loading={loading} data={data}> 
+      <QueryResult error={error} loading={loading} data={data} >
         {data?.tracksForHome?.map(track => (
           <TrackCard key={track.id} track={track} />
-        ))}   
+        ))}
       </QueryResult>
     </Layout>);
 };
